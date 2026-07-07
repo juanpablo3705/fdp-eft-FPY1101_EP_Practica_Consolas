@@ -185,9 +185,12 @@ def mostrar_todas(diccionario_consolas, diccionario_ventas):
     if len(diccionario_consolas) == 0:
         print("Error, no hay consolas registradas.")
         return
-    
-
-
+    for sigla,datos in diccionario_consolas.items():
+            nombre, fabricante, anio = datos
+            precio, stock = diccionario_ventas[sigla]
+            print(f"Sigla: {sigla} | {nombre} | {fabricante} | {anio} | ${precio:.2f} | {stock}")
+    print("==============================")
+    print(f"Total de consolas: {len(diccionario_consolas)}")
 
 # programa principal:
 diccionario_consolas = {}
@@ -203,7 +206,7 @@ while True:
         case 3:
             eliminar_consola(diccionario_consolas, diccionario_ventas)
         case 4:
-            print("4")
+            mostrar_todas(diccionario_consolas, diccionario_ventas)
         case 5:
             print("Saliendo...")
             break
